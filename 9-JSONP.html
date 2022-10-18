@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function jsonp({url,parma,callbackName}){
+      // callbackName 是随机的
+      /* https://api.com/transOn/index.html?bizType=TSC&bizPayload=2zzoy4kd */
+      const dataUrl = () =>{
+        let datas;
+        for(let key in parma){
+          if(parma.hasOwnProperty(key))
+          datas += `${key}=${parma[key]}&`
+        }
+        datas += `callback = ${callbackName}`
+        return `${url}?${datas}`
+      }
+      return new Promise((resolve,reject)=>{
+        let script =  document.createElement('script');
+        script.src = dataUrl();
+        document.body.appendChild(script);
+        window[callbackName] = res =>{
+          resolve(res)
+          document.removeChild(script);
+        }
+      })
+    }
+
+    // jsonp({
+    //   url:'',
+    //   parma:{
+    //     name:'jois',
+    //   },
+    //   callbackName : 'dh' + parseInt(Math.random()*10000000,10)
+    // })
+  </script>
+</body>
+</html>

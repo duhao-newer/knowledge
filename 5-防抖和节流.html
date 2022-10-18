@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 防抖 相当于法师的技能条，每次发动技能都要重新读条
+    function debounce(fun,depy,immediate){
+      let timeout
+      return function (){
+        let args = arguments;
+        if(immediate){
+          fun.apply(this,args)
+        }
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+          fun.apply(this,args)
+        },depy)
+      }
+    }  
+    let dea = debounce(fun,1000,true)   
+    //节流 相当于机枪，一直按，但是射速是一定的
+    function throttle(fun,depy){
+      let timeout;
+      return function(){
+        let args=arguments;
+        if(!timeout){
+          timeout = setTimeout(()=>{
+            clearTimeout(timeout)
+            fun.apply(this,args)
+          },depy)
+        }
+      }
+    }
+    throttle(fun,1000)
+  </script>
+</body>
+</html>

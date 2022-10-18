@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      // 浅拷贝
+      // JSON.parse(JSON.stringify())
+      function clone(target){
+        let obj={};
+        for(let key in target){
+          obj[key] = target[key]
+        }
+        return obj;
+      }
+      // 深拷贝
+      function clones(target,map = new Map()){
+        /* 基本数据类型 */
+        if(!isObject(target)){
+          return target;
+        }
+        /* 正则 日期  */
+        let constructor = target.constructor;
+        if(/^(RegExp|Date)$/i.test(constructor.name)){
+          return new constructor(target)
+        }
+        let clonetar;
+        /* 防止循环引用 */
+        if(map.get(target)){
+          return map.get(target);
+        }
+        clonetar =  Array.isArray(target) ? [] : {};
+        map.set(target,clonetar)
+        /* 引用数据类型  */
+        for(let key in target){
+          clonetar[key] = clones(target[key],map)
+        }
+        return clonetar;
+      }
+      function isObject(target){
+        let type = typeof target;
+        return target !== null && (type === 'function' || type === 'object')
+      }
+      const target = {
+          field1: 1,
+          field2: undefined,
+          field3: {
+              child: 'child'
+          },
+          date: new Date(),
+          reg: /\d+/,
+          empty: null,
+          field4: [2, 4, 8],
+          f: { f: { f: { f: { f: { f: { f: { f: { f: { f: { f: { f: {} } } } } } } } } } } },
+      };
+      target.target = target;
+      console.log(clones(target));
+</script>
+</body>
+</html>

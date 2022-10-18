@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    Function.prototype.callcopy = function(contexts, ...args) {
+      const context = contexts || window
+      args = args ? args : []
+      const key = Symbol()// 设置一个独一无二的属性，防止覆盖原有的属性
+      context[key] = this // this指打点的对象
+      // console.log(args)
+      const result = context[key](...args)
+      // let res = eval('context.fn(' + args +')') // 执行该表达式及执行this函数，
+      delete context[key]
+      return result
+      /*
+        如何改变this
+        context.fn() 因为是打点调用，所以fn方法中的this指向context，而context就是传入的其他方法
+      */
+    }
+    Function.prototype.applycopy = function(contexts, args) {
+      const context = contexts || window
+      args = args ? args : []
+      const key = Symbol()// 设置一个独一无二的属性，防止覆盖原有的属性
+      context[key] = this // this指打点的对象
+      // console.log(args)
+      const result = context[key](...args)
+      // let res = eval('context.fn(' + args +')') //执行该表达式及执行this函数
+      delete context[key]
+      return result
+      /*
+        如何改变this
+        context.fn() 因为是打点调用，所以fn方法中的this指向context，而context就是传入的其他方法
+      */
+    }
+    Function.prototype.myBind = function(context, ...args) {
+      const fn = this
+      args = args ? args : []
+      const protofn = function () {}
+      const newFn = function (...newFnArgs) {
+        // if (this instanceof newFn) {
+        //   return new fn( ...args, ...newFnArgs)
+        // }
+        fn.apply(this instanceof newFn ? this : context, [...args, ...newFnArgs])
+        /*
+           这里retrun 不 return 没关系
+        */
+      }
+      protofn.prototype = fn.prototype
+      newFn.prototype = new protofn
+      return newFn
+    }
+    let obj = {
+      name: "alice",
+      age: 19
+    }
+    function demo(){
+      this.name ='jons' // 如果直接调用 这里会改变 obj中的name；如果new bind返回的函数，这里的name 会同步在返回的new 的函数中； 
+      console.log(this)
+    }
+    demo.prototype.foo=function(){}
+    // demo.callcopy(obj,'d')
+    demo.applycopy(obj, ['d'])
+    demo.apply(obj, ['id'])
+    // let o=demo.myBind(obj)
+    // let b=new o
+  </script>
+  <script>
+    var value = 2
+    var foo = {
+      value: 1
+    }
+    function bar(name, age) {
+      this.habit = 'shopping'
+      console.log(this.habit)
+      console.log(name)
+      console.log(age)
+    }
+    bar.prototype.friend = 'kevin'
+    var bindFoo = bar.bind(foo, 'daisy')
+    // let objs = new bindFoo('18')
+    // console.log(objs.friend)
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+pop shift
+push unshift
+splice 
+some every  
+findIndex find
+map forEach
+concat join
+reduce
+filter reverse sort
+
+vue的修饰符
+stop 阻止冒泡
+self 点击自身dom才会触发
+capture 捕获事件优先执行
+lazy trim number 输入框的限制
+once 多次点击只执行一次
+left right middle 鼠标的按键
+prevent 阻止默认事件
+sync 父子组件传值
+
+vue 父子组件的周期函数执行顺序
+
+父beforecreate > 父created > 父beforemount > 子beforecreate > 子create > 子beforemount > 子mounted > 父mounted
+
+数据更新
+父beforeupdate > 子beforeupdate > 子updated > 父updated
+
+BFC的触发条件
+
+body根标签
+行内元素 inline-block
+设置position
+设置overflow
+flex
+可以解决那些问题
+
+margin塌陷
+清除浮动
+父元素高度塌陷
+与浮动元素隔离
+
+flex-deriction
+flex-wrap
+flex-flow
+justify-content
+align-items
+aligin-content
+order
+flex-grow
+flex-shrink
+flex-basis
+align-self
+flex
+
+vuex 
+
+action 可以异步操作
+mutation 
+state
+getter
+mapstate
+
+
+vueRoute
+
+beforeEach 全局守卫
+beforeEnter
+beforeRouteEnter
+beforeRouteUpdate
+beforeRouteLeave
+
+
+具名插槽
+作用域插槽
+
+html的语义化标签的理解
+
+好处比如 
+有利于SEO 便于机器爬虫 爬虫是根据html标签 来确定上下文内容和结构的权重的
+即使在没有css的情况下 更加美观些
+便于开发人员阅读
+header nav article aside footer 
+
+html5 新增
+
+增加语义化标签
+播放音视频 video audio
+本地存储
+websocket
+增加表单属性 placeholder
+canvas
+
+css3 
+border-radius 圆角
+background-size 背景大小
+transform : translate() 位移
+transition : 属性 时间 ease 开始时间 过渡
+box-shadow : 水平 垂直 模糊程度 颜色
+display :flex 弹性布局
+@media and screen ()
+
+get 和 post 
+
+传递参数不同 request body
+安全性 可以在路由中查看
+get的参数会被浏览器保存在历史记录中
+get请求回被浏览器主动存储cache post需要手动设置
+get的传参受不同浏览器最大url长度的限制，最大长度是固定的 post的参数放在请求体中，理论没有大小限制
+
+
+document.body.clientHeight
+document.body.clientWidth
+document.body.scollHeight
+document.body.scrollWidth
+document.body.scrollTop
+document.body.scrollWidth
+document.body.scrollHeight
+document.body.scrollLeft
+
+
+flex-deriction 主轴的方向 默认row column row-reverse column-reverse
+flex-wrap 规定是否可以换行 默认 nowrap wrap wrap-reverse
+flex-flow 前两个属性的缩写 
+justify-content 规定项目横轴的排列顺序 center space-between space-around flex-start flex-end
+aligin-items flex-start flex-end center baseline stretch 
+aligin-content  flex-start flex-end center space-between space-around stretch
+
+单个项目的设置属性
+
+order 默认是0 越大越靠前
+flex-grow 规定项目是否可以变大 默认是0
+flex-shrink 规定项目是否可以缩小 默认是1
+flex-basis 默认是 auto
+flex 
+aligin-self 规定单个项目的排序允许与容器规定的不一致

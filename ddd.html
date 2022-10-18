@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+        // let a = {n : 1};
+        // let b = a;
+        // a.x = a = {n: 2};
+        // console.log(a.x)
+        // console.log(b.x)
+        /* 
+          . 的优先级比 = 高
+        */
+        // foo();
+        // va();
+        // function foo(){
+        //   console.log(1);
+        // }
+        // var va = function (){
+        //   console.log(2);
+        // }
+        // var a = 0,  
+        //     b = 0;
+        // function A(a) {
+        //     A = function (b) {
+        //         console.log(a);
+        //         console.log(a + b++)
+        //     }
+        //     console.log(a++)
+        // }
+        // A(1)
+        // A(2)
+        // var b = 10;
+        // (function b(){
+        //     console.log(b)
+        //     b = 5
+        //     console.log(window.b)
+        //     var b = 20
+        //     console.log(b)
+        // })()
+        console.log(undefined == 0);
+        console.log(undefined == false);
+        console.log(false == '');
+        //  function sum(a, b) {
+        //     return a + b;
+        //   }
+        //   console.log(sum(1, "2"));;
+        //   var str = "我非常喜欢编程";
+        //   str.length = 3;
+        //   console.log(str);
+        //   var x = 1;
+
+        //   var obj = {
+        //       x: 3,
+        //       fun:function () {
+        //           var x = 5;
+        //           return this.x;
+        //       }
+        //   };
+
+        //   var fun = obj.fun;
+        //   console.log( obj.fun(), fun() );
+        // var a = 5;
+        // function test() { 
+        //     a = 0; 
+        //     console.log(this);
+        //     alert(a); 
+        //     alert(this.a); 
+        //     var a;
+        //     alert(a); 
+        // }
+        // new test();
+        // let obj1 = {
+        //     a: 1,
+        //     foo: () => {
+        //         console.log(this.a)
+        //     }
+        // }
+        // 理发 蚊香
+        // // log1
+        // obj1.foo()
+        // const obj2 = obj1.foo
+        // // log2
+        // obj2()
+  </script>
+</body>
+</html>

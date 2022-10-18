@@ -1,0 +1,43 @@
+容器的六个属性
+  flex-direction 规定项目的主轴排列顺序
+  四个属性值
+    row 默认
+    row-reverse 横轴倒序
+    column 纵向
+    column-reverse 纵轴倒序
+  flex-wrap 规定项目是否可以换行
+  三个属性值
+    nowrap 默认
+    wrap 可以换行
+    wrap-reverse 第一行在下边
+  flex-flow 前两个属性的简写
+    flex:row nowrap 默认
+  justify-content 规定横向布局方式
+  五个属性
+    flex-start 左对齐
+    flex-end 右对齐
+    center 剧中
+    space-between 空隙位于中间
+    space-around 空隙位于两侧
+  align-items 规定纵向布局
+  五个属性986
+    flex-start 同上
+    flex-end 同上
+    center 同上
+    baseline 与第一个项目的文字对齐
+    stretch   如果项目未设置高度或设为auto，将占满整个容器的高度。
+  align-content 规定多条主轴的对齐方式
+    flex-start
+    flex-end
+    center
+    space-between 空隙位于中间
+    space-around 空隙位于两侧
+    stretch（默认值）：轴线占满整个交叉轴。
+项目的六个属性
+  order 项目的排列优先级 数值越小越靠前 默认是 0
+  flex-grow 项目变大，占据空隙 默认是 0 不放大
+  flex-shrink 项目缩小 默认是 1 
+  flex-basis: <length> | auto; /* default auto */  默认 auto
+  flex 是flex-grow, flex-shrink  flex-basis的简写，默认值为0 1 auto。后两个可选。
+  align-self 允许单个项目与容器规定的排列顺序不一致
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;

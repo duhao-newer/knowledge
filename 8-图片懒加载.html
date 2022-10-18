@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //在vue项目里可以在vue2.0的mounted()函数中执行
+    window.addEventListener('scroll',lazyload)
+    lazyload();
+    function lazyload(){
+      const imgs = document.querySelectorAll('img');
+      let count = 0;
+      const h = window.innerHeight;
+      imgs.forEach(item=>{
+        if(item.getBoundingClientRect().top - 10 < h ){
+          count++;
+          setTimeout(()=>{
+            let imga = new Image();
+            imga.src = item.getAttribute('data-src');
+            imga.onload(()=>{
+              item['src'] = item.getAttribute('data-src')
+            })
+          },2000)
+          if(count === imgs.length){
+            window.removeEventListener('scroll',lazyload)
+          }
+        }
+      })
+    }
+  </script>
+</body>
+</html>

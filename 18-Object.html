@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object</title></title>
+</head>
+<body>
+  <script>
+    //Object.create
+    Object.create2 = function (proto,prototypes){
+      if(proto !== 'object' || proto !== 'function'){
+        throw new TypeError('Object prototype may only be an Object or null.')
+      }
+      if(prototypes == null){
+        new TypeError('Cannot convert undefined or null to object')
+      }
+      function F(){}
+      F.prototype = proto;
+      let obj = new F()
+      if(prototypes != 'undefined'){
+        Object.defineProperties(obj,prototypes)
+      }
+      return obj;
+    }
+    Object.assign2 = function(target, ...source) {
+        if (target == null) {
+            throw new TypeError('Cannot convert undefined or null to object')
+        }
+        let ret = Object(target) 
+        source.forEach(function(obj) {
+            if (obj != null) {
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        ret[key] = obj[key]
+                    }
+                }
+            }
+        })
+        return ret
+    }
+  </script>
+</body>
+</html>
